@@ -81,7 +81,7 @@ body{
 
 .scorebox{
     display: flex;
-    min-width: 120px;
+    min-width: 80px;
     width: 20%;
     background-color: rgb(36, 36, 36);
     color: white;
@@ -311,6 +311,10 @@ body{
 
 @media (max-width:800px) 
 {
+    .box{
+        width: 60vw;
+    }
+
     .clickedbox-x::before{
         font-size: 46px; 
     }
@@ -336,10 +340,18 @@ body{
     .line{
         border-right: 4px solid rgb(64, 64, 64);
     }
+
+    .scorebox{
+        padding: 6px 12px;
+    }
 }
 
 @media (max-width:650px) 
 {
+    .box{
+        width: 70vw;
+    }
+
     .clickedbox-x::before{
         font-size: 32px; 
     }
@@ -363,4 +375,53 @@ body{
     }
 }
 
+@media (max-width:550px) 
+{
+    .box{
+        width: 80vw;
+    }
 
+    .scorebox{
+        padding: 4px 12px;
+    }
+
+    .livecard{
+        font-size: 12px;
+    }
+
+    .game-grid{
+        width: 65%;
+    }
+
+    .scorebox{
+        font-size: 18px;
+    }
+    
+    .scorebox >span:not(.scoreval){
+        font-size: 14px;
+    }
+
+    .restarts{
+        font-size: 12px;
+    }
+
+    .start-window span{
+        font-size: 22px;
+    }
+
+}
+
+@media (max-width:400px) 
+{
+    .box{
+        width: 85vw;
+    }
+    .game-grid{
+        width: 85%;
+    }
+
+    .start-window span{
+        font-size: 18px;
+    }
+    
+}
