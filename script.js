@@ -12,7 +12,7 @@ function checkforwin()
         {
             if((arr[0][temps]==arr[1][temps]) && (arr[1][temps]==arr[2][temps]))
             {
-                return temps;
+                return 1;
             }
         }
 
@@ -20,24 +20,23 @@ function checkforwin()
         {
             if((arr[temps][0]==arr[temps][1]) && (arr[temps][1]==arr[temps][2]))
             {
-                return (temps+3);
+                return 1;
             }
         }
     }
 
     if(((arr[0][0]>=0)&&(arr[0][0]==arr[1][1] && arr[1][1]==arr[2][2]))) 
     {
-        return 7;
+        return 1;
     }
 
     if(((arr[0][2]>=0)&&(arr[0][2]==arr[1][1] && arr[1][1]==arr[2][0])))
     {
-        console.log("sedxs");
-        return 6;
+        return 1;
     }
 
 
-    return -1;
+    return 0;
 }
 
 
@@ -74,8 +73,8 @@ function insertval(sels,i)
 
         if(counter>=5)
         {
-            let crossedlineno = checkforwin();
-            if(crossedlineno!=-1)
+
+            if(checkforwin())
             {
                 if(active==0)
                 {
@@ -85,36 +84,21 @@ function insertval(sels,i)
                 {
                     scorearr[1]++;
                 }
+
+                resulthead.textContent= active ?'O WINS !!' :'X WINS !!';
+                gamegrid.style.opacity=0;
+                anim();
+                setTimeout(()=>gamegrid.style.opacity=1,6700);
+                setTimeout(()=>results.style.animation="",7000);
                 
-                line.forEach(function(ls,i){
-                    if(i==crossedlineno)
-                    {
-                        ls.style.opacity=1;
-                    }
-                })
-
-                setTimeout(function()
+                scoreupdate.forEach(function(sc,i)
                 {
-                    line.forEach(function(ls,i){
-                        if(i==crossedlineno)
-                        {
-                            ls.style.opacity=0;
-                        }
-                    })
-                    resulthead.textContent= active ?'O WINS !!' :'X WINS !!';
-                    gamegrid.style.opacity=0;
-                    anim();
-                    setTimeout(()=>gamegrid.style.opacity=1,6700);
-                    setTimeout(()=>results.style.animation="",7000);
-                    
-                    scoreupdate.forEach(function(sc,i)
-                    {
-                        sc.textContent=scorearr[i];
-                    });
+                    sc.textContent=scorearr[i];
+                });
 
-                    next_round();
-                    return;
-                },2000);
+                next_round();
+                return;
+    
             }
             else
             {
@@ -202,7 +186,6 @@ const scoreupdate = document.querySelectorAll('.scoreval');
 const gamegrid = document.getElementById('gridid');
 const results = document.getElementById('resultsid');
 const resulthead = document.querySelector('.resulthead');
-const line = document.querySelectorAll('.line');
 
 //-------------------------------------------------------------------------
 
