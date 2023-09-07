@@ -115,6 +115,7 @@ body{
 
 .game-grid{
     width: 50%;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3,auto);
     transition: all 0.4s ease-in-out;
@@ -218,68 +219,6 @@ body{
     width: 184px;
     height: 100px;
 }
-
-
-.line{
-    opacity: 0;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 32%;
-    height: 100%;
-    transition: all 0.2s ease-in;
-    transform-origin: top;
-    width: 1px;
-    border-right: 8px solid rgb(64, 64, 64);
-}
-
-.line:nth-child(2)
-{
-    left: 49%;
-}
-
-.line:nth-child(3)
-{
-    left: 66%;
-}
-
-.line:nth-child(5)
-{
-    transform: rotate(90deg) translateY(-140%) translateX(1950%);
-    top: 0;
-    left: 0;
-}
-
-.line:nth-child(4)
-{
-    transform: rotate(90deg) translateY(-140%) translateX(600%); 
-    top: 0;
-    left: 0;
-}
-
-.line:nth-child(6)
-{
-    transform: rotate(90deg) translateY(-140%) translateX(3300%); 
-    top: 0;
-    left: 0;
-}
-
-.line:nth-child(7)
-{
-    transform: translateY(9%) translateX(5223%) rotate(43deg);
-    height: 120%;
-    top: 0;
-    left: 0;
-}
-
-.line:nth-child(8)
-{
-    transform: translateY(8%) translateX(-350%) rotate(-45deg); 
-    height: 120%;
-    top: 0;
-    right: 0;
-}
-
 
 /*MEDIA QUERIES */
 
@@ -425,3 +364,4 @@ body{
     }
     
 }
+
