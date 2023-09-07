@@ -1,0 +1,366 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    background-color: rgb(2, 68, 68);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.box{
+    width: 50%;
+    position: relative;
+    margin: 10vh auto;
+    background-color: rgb(4, 198, 198);
+    border-radius: 8px;
+    box-shadow: 0px 4px 32px rgb(33, 33, 33);
+    overflow: hidden;
+}
+
+.start-window img{
+    position: absolute;
+    width: 184px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+
+.start-window span{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 26px;
+    font-weight: 600;
+    color: rgb(255, 240, 199);
+    background-color: rgb(1, 80, 80);
+    padding: 8px 36px;
+    border-radius: 16px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.start-window span:hover,span:active{
+    background-color: rgb(1, 108, 108);
+}
+
+.start-window{
+    transition: all 0.2s ease-out;
+}
+
+.play-window{
+    opacity: 0;
+    transition: all 0.2s ease-out;
+}
+
+.details{
+    background-color: rgb(52, 52, 52);
+    padding: 10px;
+}
+
+.livecard{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 550;
+    color: rgb(114, 114, 114);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.scorecard{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.scorebox{
+    display: flex;
+    min-width: 120px;
+    width: 20%;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    font-weight: 550;
+    padding: 10px 24px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 8px rgb(33, 33, 33);
+}
+
+.scorebox >span:not(.scoreval){
+    font-size: 24px;
+}
+
+.scoreval{
+    color: rgb(4, 198, 198);
+}
+
+.activebox{
+    border-bottom: solid 4px #04d6c1;
+}
+
+.game-box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+}
+
+.game-grid{
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    transition: all 0.4s ease-in-out;
+    z-index: 2;
+}
+
+.ele{
+    position: relative;
+    width: 100%;
+    border: solid 4px rgb(2, 113, 118);
+    padding-top: 100%;
+}
+
+.ele:nth-child(1),
+.ele:nth-child(2),
+.ele:nth-child(3){
+    border-top: none;
+}
+
+.ele:nth-child(1),
+.ele:nth-child(4),
+.ele:nth-child(7){
+    border-left: none;
+}
+
+.ele:nth-child(3),
+.ele:nth-child(6),
+.ele:nth-child(9){
+    border-right: none;
+}
+
+.ele:nth-child(7),
+.ele:nth-child(8),
+.ele:nth-child(9){
+    border-bottom: none;
+}
+
+.restarts{
+    display: flex;
+    justify-content: center;
+    padding: 8px 0px;
+    color: #04d6c1;
+    font-weight: 600;
+    background-color: rgb(52, 52, 52);
+}
+
+
+.clickedbox-x::before{
+    content: "X";
+    position: absolute;
+    font-size: 74px;
+    font-weight: 600;
+    color: rgb(64, 64, 64);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);    
+}
+
+.clickedbox-o::before{
+    content: "O";
+    position: absolute;
+    font-size: 74px;
+    font-weight: 600;
+    color: rgb(255, 240, 199);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);    
+}
+
+.restarts:hover,.restarts:active{
+    background-color: rgb(63, 63, 63);
+    cursor: pointer;
+}
+
+.results{
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-size: 30px;
+    color: rgb(35, 35, 35);
+    top: 50%;
+    left: 50%;
+    transition: all 1s ease-in-out;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+
+@keyframes resultop 
+{
+    50% {opacity: 1;}
+    95% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.results img{
+    width: 184px;
+    height: 100px;
+}
+
+
+.line{
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 32%;
+    height: 100%;
+    transition: all 0.2s ease-in;
+    transform-origin: top;
+    width: 1px;
+    border-right: 8px solid rgb(64, 64, 64);
+}
+
+.line:nth-child(2)
+{
+    left: 49%;
+}
+
+.line:nth-child(3)
+{
+    left: 66%;
+}
+
+.line:nth-child(5)
+{
+    transform: rotate(90deg) translateY(-140%) translateX(1950%);
+    top: 0;
+    left: 0;
+}
+
+.line:nth-child(4)
+{
+    transform: rotate(90deg) translateY(-140%) translateX(600%); 
+    top: 0;
+    left: 0;
+}
+
+.line:nth-child(6)
+{
+    transform: rotate(90deg) translateY(-140%) translateX(3300%); 
+    top: 0;
+    left: 0;
+}
+
+.line:nth-child(7)
+{
+    transform: translateY(9%) translateX(5223%) rotate(43deg);
+    height: 120%;
+    top: 0;
+    left: 0;
+}
+
+.line:nth-child(8)
+{
+    transform: translateY(8%) translateX(-350%) rotate(-45deg); 
+    height: 120%;
+    top: 0;
+    right: 0;
+}
+
+
+/*MEDIA QUERIES */
+
+@media (max-width:1200px) 
+{
+    .clickedbox-x::before{
+        font-size: 54px; 
+    }
+
+    .clickedbox-o::before{
+        font-size: 54px;
+    }
+
+    .results img{
+        width: 110.4px;
+        height: 60px;
+    }
+
+    .results{
+        font-size: 18px;
+        gap: 40px;
+    }
+
+    .line{
+        border-right: 6px solid rgb(64, 64, 64);
+    }
+
+}
+
+@media (max-width:800px) 
+{
+    .clickedbox-x::before{
+        font-size: 46px; 
+    }
+
+    .clickedbox-o::before{
+        font-size: 46px;
+    }
+
+    .results img{
+        width: 92px;
+        height: 50px;
+    }
+
+    .results{
+        font-size: 12px;
+        gap: 30px;
+    }
+
+    .ele{
+        border: solid 3px rgb(2, 113, 118);
+    }
+
+    .line{
+        border-right: 4px solid rgb(64, 64, 64);
+    }
+}
+
+@media (max-width:650px) 
+{
+    .clickedbox-x::before{
+        font-size: 32px; 
+    }
+
+    .clickedbox-o::before{
+        font-size: 32px;
+    }
+
+    .results img{
+        width: 73.6px;
+        height: 40px;
+    }
+
+    .results{
+        font-size: 10px;
+        gap: 24px;
+    }
+
+    .line{
+        border-right: 3px solid rgb(64, 64, 64);
+    }
+}
+
+

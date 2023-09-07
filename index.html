@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="box">
+        <div class="start-window" id="swindowid">
+            <img src="./thumbnail.png" alt="img">
+            <span class="play-button">PLAY</span>
+        </div>
+        <div class="play-window" id="pwindowid">
+            <div class="details">
+                <div class="scorecard">
+                    <div class="scorebox activebox">
+                        <span>X</span>
+                        <span class="scoreval">-</span>
+                    </div>
+                    <div class="scorebox ">
+                        <span>O</span>
+                        <span class="scoreval">-</span>
+                    </div>
+                </div>
+                <div class="livecard">
+                    X Turn
+                </div>
+            </div>
+            <div class="game-box">
+                <div class="lines">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="game-grid" id="gridid">
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                    <div class="ele"></div>
+                </div>
+                <div class="results" id="resultsid">
+                    <img src="./thumbnail.png">
+                    <h1 class="resulthead">DRAW!!</h1>
+                </div>
+            </div>
+            <div class="restarts">
+                <p>RESTART GAME</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
