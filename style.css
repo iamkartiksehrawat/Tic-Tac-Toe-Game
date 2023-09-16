@@ -353,10 +353,10 @@ body{
 @media (max-width:400px) 
 {
     .box{
-        width: 85vw;
+        width: 90vw;
     }
     .game-grid{
-        width: 85%;
+        width: 90%;
     }
 
     .start-window span{
