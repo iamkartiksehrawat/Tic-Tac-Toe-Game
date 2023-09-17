@@ -153,6 +153,10 @@ body{
     border-bottom: none;
 }
 
+.bgchanged{
+    background-color: rgb(3, 240, 149);
+}
+
 .restarts{
     display: flex;
     justify-content: center;
@@ -363,5 +367,28 @@ body{
         font-size: 18px;
     }
     
+}
+
+
+@media (max-width:300px) 
+{
+    .box{
+        width: 95vw;
+    }
+    .game-grid{
+        width: 95%;
+    }
+
+    .start-window span{
+        font-size: 16px;
+    }
+
+    .clickedbox-x::before{
+        font-size: 36px; 
+    }
+
+    .clickedbox-o::before{
+        font-size: 36px;
+    }
 }
 
