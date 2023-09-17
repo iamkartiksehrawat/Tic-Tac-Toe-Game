@@ -12,7 +12,7 @@ function checkforwin()
         {
             if((arr[0][temps]==arr[1][temps]) && (arr[1][temps]==arr[2][temps]))
             {
-                return 1;
+                return temps+4;
             }
         }
 
@@ -20,23 +20,23 @@ function checkforwin()
         {
             if((arr[temps][0]==arr[temps][1]) && (arr[temps][1]==arr[temps][2]))
             {
-                return 1;
+                return temps+1;
             }
         }
     }
 
     if(((arr[0][0]>=0)&&(arr[0][0]==arr[1][1] && arr[1][1]==arr[2][2]))) 
     {
-        return 1;
+        return 7;
     }
 
     if(((arr[0][2]>=0)&&(arr[0][2]==arr[1][1] && arr[1][1]==arr[2][0])))
     {
-        return 1;
+        return 8;
     }
 
 
-    return 0;
+    return -1;
 }
 
 
@@ -73,8 +73,8 @@ function insertval(sels,i)
 
         if(counter>=5)
         {
-
-            if(checkforwin())
+            let resultg=checkforwin();
+            if(resultg!=-1)
             {
                 if(active==0)
                 {
@@ -85,19 +85,29 @@ function insertval(sels,i)
                     scorearr[1]++;
                 }
 
-                resulthead.textContent= active ?'O WINS !!' :'X WINS !!';
-                gamegrid.style.opacity=0;
-                anim();
-                setTimeout(()=>gamegrid.style.opacity=1,6700);
-                setTimeout(()=>results.style.animation="",7000);
-                
-                scoreupdate.forEach(function(sc,i)
-                {
-                    sc.textContent=scorearr[i];
-                });
+                //show karni h opacity
+                bgcolr(resultg);
 
-                next_round();
-                return;
+                setTimeout(
+                    function(){
+                    
+                    //hide karni h opacity
+                    bgcolr(resultg);
+                    resulthead.textContent= active ?'O WINS !!' :'X WINS !!';
+                    gamegrid.style.opacity=0;
+                    anim();
+                    setTimeout(()=>gamegrid.style.opacity=1,6700);
+                    setTimeout(()=>results.style.animation="",7000);
+                    
+                    scoreupdate.forEach(function(sc,i)
+                    {
+                        sc.textContent=scorearr[i];
+                    });
+
+                    next_round();
+                    return;
+            },2000);
+
     
             }
             else
@@ -121,6 +131,67 @@ function insertval(sels,i)
 function anim()
 {
     results.style.animation="resultop 6.5s";
+}
+
+function bgcolr(x)
+{
+    if(x==1)
+    {
+        sel[0].classList.toggle("bgchanged");
+        sel[1].classList.toggle("bgchanged");
+        sel[2].classList.toggle("bgchanged");
+    }
+
+    else if(x==2)
+    {
+        sel[3].classList.toggle("bgchanged");
+        sel[4].classList.toggle("bgchanged");
+        sel[5].classList.toggle("bgchanged");
+    }
+    
+    else if(x==3)
+    {
+        sel[6].classList.toggle("bgchanged");
+        sel[7].classList.toggle("bgchanged");
+        sel[8].classList.toggle("bgchanged");
+    }
+
+    else if(x==4)
+    {
+        sel[0].classList.toggle("bgchanged");
+        sel[3].classList.toggle("bgchanged");
+        sel[6].classList.toggle("bgchanged");
+    }
+
+    else if(x==5)
+    {
+        sel[1].classList.toggle("bgchanged");
+        sel[4].classList.toggle("bgchanged");
+        sel[7].classList.toggle("bgchanged");
+    }
+
+    else if(x==6)
+    {
+        sel[2].classList.toggle("bgchanged");
+        sel[5].classList.toggle("bgchanged");
+        sel[8].classList.toggle("bgchanged");
+    }
+
+    else if(x==7)
+    {
+        sel[0].classList.toggle("bgchanged");
+        sel[4].classList.toggle("bgchanged");
+        sel[8].classList.toggle("bgchanged");
+    }
+
+    else if(x==8)
+    {
+        sel[2].classList.toggle("bgchanged");
+        sel[4].classList.toggle("bgchanged");
+        sel[6].classList.toggle("bgchanged");
+    }
+    
+    
 }
 
 function next_round()
